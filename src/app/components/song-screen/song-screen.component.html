@@ -1,0 +1,19 @@
+<div id="container">
+  <div *ngIf="paused" class="pause">
+  </div>
+  <div *ngIf="!paused" class="song-container">
+    <div *ngIf="songIndex === -1" id="welcome">
+      <h1>{{mainSlideText}}</h1>
+      <h2>{{mainSlideSubtext}}</h2>
+    </div>
+    <div *ngIf="songIndex >= 0">
+      <h1 *ngIf="verseIndex === 0" id="title">{{songTitle}}</h1>
+      <div *ngFor="let verse of verses[verseIndex]">
+        <app-slide [verse]="verse"></app-slide>
+      </div>
+      <div class="counter">{{verseIndex+1}}/{{verses.length}}</div>
+    </div>
+  </div>
+
+
+</div>

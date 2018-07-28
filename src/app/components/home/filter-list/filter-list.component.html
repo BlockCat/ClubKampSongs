@@ -1,0 +1,8 @@
+<input (focus)="focused = true" (blur)="focused = false" type="text" class="input-group-text" id="songFilter" #songFilter placeholder="Filter" (input)="SearchData($event.target.value)"/>
+<table class="table-bordered table">
+  <tbody>
+  <tr *ngFor="let song of getFilteredSongs()" class="songSelect" (click)="onSongClick(song)">
+    <td>{{song.title}}</td>
+  </tr>
+  </tbody>
+</table>

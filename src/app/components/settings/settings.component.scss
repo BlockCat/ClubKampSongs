@@ -1,0 +1,13 @@
+div#screens {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+
+  nb-card.screen {
+    margin: 10px;
+  }
+
+  .main-screen {
+    background: #97acc0;
+  }
+}

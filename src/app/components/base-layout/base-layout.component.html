@@ -1,0 +1,15 @@
+<nb-layout>
+  <nb-layout-header>
+    <h1 class="title">
+      {{ 'PAGES.HOME.TITLE' | translate }}
+    </h1>
+  </nb-layout-header>
+  <nb-sidebar>
+    <div>
+      <nb-menu id="menu-sidebar" [items]="menuItem" tag="sidebar" nbContextMenuTag="sidebar" nbContextMenu="sidebar"></nb-menu>
+    </div>
+  </nb-sidebar>
+  <nb-layout-column>
+    <ng-content></ng-content>
+  </nb-layout-column>
+</nb-layout>

@@ -1,0 +1,44 @@
+<app-base-layout>
+<div class="row">
+  <nb-card class="col-12">
+    <nb-card-body>
+      <button class="btn-group-full-width btn btn-info" routerLink="/list">Back</button>
+      <button class="btn-group-full-width btn btn-success" routerLink="/list" (click)="saveList()">Save</button>
+    </nb-card-body>
+  </nb-card>
+  <div class="col-6">
+    <nb-card>
+      <nb-card-header>
+        Create new list
+      </nb-card-header>
+      <nb-card-body>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Name" [(ngModel)]="listName">
+        </div>
+        <!--<ol>
+          <li *ngFor="let song of songs; let i = index" class="list-group-item song-item" (click)="toRight(song)">{{song.title}}</li>
+        </ol>-->
+        <app-filter-list [onSongClick]="toRight.bind(this)"></app-filter-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-6">
+    <nb-card>
+      <nb-card-header>
+        Songs: {{listName}}
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row selected-song" *ngFor="let song of selectedSongs; let i = index">
+          <div class="col-8">
+            {{song.title}}
+          </div>
+          <div class="col-1" (click)="up(i)"><fa-icon [icon]="faUp"></fa-icon></div>
+          <div class="col-1" (click)="down(i)"><fa-icon [icon]="faDown"></fa-icon></div>
+          <div class="col-1" (click)="remove(i)"><fa-icon [icon]="faRemove"></fa-icon></div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>
+</app-base-layout>

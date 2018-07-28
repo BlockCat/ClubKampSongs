@@ -1,0 +1,51 @@
+.song-container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  padding: 1em;
+  color: whitesmoke;
+}
+#container {
+  background: #111111;
+  height: 100%;
+}
+#welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    color: #9b2c49;
+    font-size: 8vw;
+  }
+
+  h2 {
+    color: #9b3943;
+    font-size: 5vw;
+  }
+}
+
+.pause {
+  width: 100%;
+  height: 100%;
+  background: #000000;
+}
+
+h1#title {
+  font-size: 6vw;
+  font-style: oblique;
+  color: white;
+  margin-bottom: 1em;
+}
+
+.counter {
+  color: white;
+  position: fixed;
+  bottom: 4px;
+  right: 4px;
+}

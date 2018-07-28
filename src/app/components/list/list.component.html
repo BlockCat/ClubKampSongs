@@ -1,0 +1,45 @@
+<app-base-layout>
+<div class="row">
+  <div class="col-8">
+  <nb-card>
+      <nb-card-header>
+        <h1>Lists</h1>
+        <button class="btn btn-sm btn-info" routerLink="/list/edit">Create new</button>
+      </nb-card-header>
+    <nb-card-body>
+      <table id="list-table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="list-row" *ngFor="let list of lists" (click)="selectedList = list">
+            <td>{{list.name}}</td>
+            <td>{{list.date.toDateString()}}</td>
+            <td routerLink="/list/edit" [queryParams]="{ name: list.name, date: list.date.toDateString()}"><fa-icon [icon]="faEdit"></fa-icon></td>
+            <td (click)="removeList(list)"><fa-icon [icon]="faRemove"></fa-icon></td>
+          </tr>
+        </tbody>
+      </table>
+    </nb-card-body>
+  </nb-card>
+  </div>
+  <div class="col-4">
+    <nb-card>
+      <nb-card-header>
+        Songs: {{selectedList?.name}}
+      </nb-card-header>
+      <nb-card-body>
+        <ol>
+          <li *ngFor="let song of selectedList?.songs">
+            {{song?.title}}
+          </li>
+        </ol>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+</app-base-layout>

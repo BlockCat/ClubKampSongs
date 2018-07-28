@@ -1,0 +1,66 @@
+<app-base-layout>
+  <div class="row full-width" *ngIf="songsFound">
+    <nb-card class="col-12 bg-danger clickable" (click)="openSongsFolder()">
+      <nb-card-body>
+        <h1>No songs are found</h1>
+        <h3>Click here to add new songs</h3>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="row full-width" *ngIf="listsFound">
+    <nb-card class="col-12 bg-danger clickable" routerLink="/list">
+      <nb-card-body>
+        <h1>No Lists are found</h1>
+        <h3>Click here to add new lists</h3>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="row full-width" *ngIf="!isOpened">
+    <nb-card class="col-12">
+      <nb-card-body>
+        <div class="input-group input-group-lg full-width row">
+          <select class="custom-select col-12" #listSelect (change)="onSelectInputChange($event)">
+            <option selected [value]="-1">Choose...</option>
+            <option *ngFor="let list of lists; let i = index" [value]="i">
+              {{list.name}}
+            </option>
+          </select>
+
+          <button class="btn btn-success col-12" type="button" (click)="openWindow()">
+            Start
+          </button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+    <nb-card *ngIf="selectedListIndex >= 0" class="col-12">
+      <nb-card-body>
+        <table class="table table-bordered full-width">
+          <tr *ngFor="let song of lists[selectedListIndex].songs"><td>{{song.title}}</td></tr>
+        </table>
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+  <div class="row" *ngIf="isOpened">
+    <nb-card class="col-4">
+      <nb-card-header>Songs:</nb-card-header>
+      <nb-card-body>
+        <table class="table table-bordered">
+          <tbody>
+          <tr *ngFor="let song of songs; let i = index" (click)="setSongIndex(i)" class="songSelect"
+              [class.songSelected]="i === selectedSongIndex">
+            <td>{{i}}</td>
+            <td>{{song.title}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </nb-card-body>
+    </nb-card>
+    <nb-card class="col-8">
+      <nb-card-header>List:</nb-card-header>
+      <nb-card-body>
+        <app-filter-list [onSongClick]="setCustomSong.bind(this)" #filterInput></app-filter-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</app-base-layout>

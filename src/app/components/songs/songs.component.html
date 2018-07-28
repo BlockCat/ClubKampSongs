@@ -1,0 +1,19 @@
+<app-base-layout>
+<nb-card>
+  <nb-card-body>
+    <div>
+      <button class="btn btn-primary" (click)="reloadSongs()">Reload</button>
+    </div>
+    <table class="songs">
+      <thead>
+        <tr><th>Name</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let song of songs" class="song-row">
+          <td>{{song.title}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>
+</app-base-layout>

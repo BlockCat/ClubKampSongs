@@ -1,0 +1,6 @@
+<div class="verse" [class.verselarge]="verse.lines.length >= 8">
+    <div *ngFor="let line of verse.lines" [class.col-11]="verse.times > 1">
+      <span *ngFor="let t of line.parts">{{t.text}}<span *ngIf="t.times > 1">({{t.times}}x)</span></span>
+      <br/>
+    </div>
+</div>
