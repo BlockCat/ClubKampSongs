@@ -8,12 +8,12 @@
     </div>
     <div *ngIf="songIndex >= 0">
       <h1 *ngIf="verseIndex === 0" id="title">{{songTitle}}</h1>
-      <div *ngFor="let verse of verses[verseIndex]">
-        <app-slide [verse]="verse"></app-slide>
+      <div *ngIf="verseIndex >= 1">
+        <div *ngFor="let verse of verses[verseIndex - 1]">
+          <app-slide [verse]="verse"></app-slide>
+        </div>
       </div>
-      <div class="counter">{{verseIndex+1}}/{{verses.length}}</div>
+      <div class="counter">{{verseIndex+1}}/{{verses.length + 1}}</div>
     </div>
   </div>
-
-
 </div>

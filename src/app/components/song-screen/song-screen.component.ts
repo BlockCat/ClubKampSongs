@@ -91,8 +91,8 @@ export class SongScreenComponent implements OnInit, OnDestroy {
 
   nextSlide() {
 
-
-    if (this.verseIndex + 1 >= this.verses.length) {
+    // first slide is the name of song, skip it. TODO: hotfix, change the solution
+    if (this.verseIndex  >= this.verses.length) {
       // If the slides for the current song run out
       // go to the next song if possible
       if (this.songIndex + 1 >= this.songs.length) {
@@ -137,7 +137,7 @@ export class SongScreenComponent implements OnInit, OnDestroy {
       if (this.songs[this.songIndex]) {
         this.songTitle = this.songs[this.songIndex].title;
         this.verses = this.getSlidesSong(this.songs[this.songIndex]);
-        this.verseIndex = this.verses.length - 1;
+        this.verseIndex = this.verses.length;
       }
     } else {
       this.verseIndex--;
@@ -150,7 +150,7 @@ export class SongScreenComponent implements OnInit, OnDestroy {
   // The other 'slides' can have max 10 lines, but each slide has to have at least one verse
   private getSlidesSong(song: Song): Verse[][] {
     const verses: Verse[][] = [];
-    let maxLines = 7;
+    let maxLines = 10;
     let currentSlide: Verse[] = [];
 
     song.verses.forEach(x => {
